@@ -1,0 +1,22 @@
+# Bỏ qua tất cả các file trong thư mục
+*
+
+# Loại trừ danh sách file cần theo dõi
+!.gitignore
+!capcha.png
+!capcha2.png
+!capcha3.png
+!checkBox.png
+!checkBox.py
+!chup.py
+!chupcacthu.py
+!dinhvi.py
+!giacu.png
+!isOffBox.py
+!noti.mp3
+!onBox.png
+!res.png
+!screenshot.png
+!test.py
+!toolchenv1.py
+!toolchenv2.py
