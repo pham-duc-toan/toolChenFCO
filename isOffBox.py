@@ -18,8 +18,8 @@ def compare_images(img1, img2, threshold=10):
 
 
 def main( ):
-    x1, y1 = 1095, 589 # Điểm bắt đầu capcha
-    x2, y2 = 1208, 634# Điểm kết thúc capcha
+    x1, y1 = 1096, 594
+    x2, y2 = 1215, 631
      
     reference_image = cv2.imread('onBox.png', cv2.IMREAD_GRAYSCALE)
     

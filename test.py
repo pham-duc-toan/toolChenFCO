@@ -4,7 +4,7 @@ import threading
 import time
 BOT_TOKEN = "7169529565:AAF_VTyhriBeWLvRHd8G5J-fM9pZdCR8PSQ"
 bot = telebot.TeleBot(BOT_TOKEN)
-from chup import capture_and_save_screenshot as chup
+from chupgiacu import capture_and_save_screenshot as chup
 from toolchenv1 import main as abc
 from toolchenv2 import main as xyz
 listloc = [(1460, 278),(1456, 339),(1452, 394),(1447, 449),(1461, 514),(1444, 562),(1441, 630),(1438, 678),(1458, 743),(1440, 796),(1443, 860)]

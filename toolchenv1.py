@@ -4,15 +4,15 @@ import numpy as np
 import threading
 import time
 from checkBox import main as checkBox
-from chup import capture_and_save_screenshot as cap
+from chupgiacu import capture_and_save_screenshot as cap
 from datetime import datetime
 from isOffBox import main as checkOffBox
-from chup import chupmau
+from chupgiacu import chupmau
 from playsound import playsound
 from telebot import TeleBot
-def capture_region(x1, y1, x2, y2):
-    width, height = x2 - x1, y2 - y1
-    screenshot = pyautogui.screenshot(region=(x1, y1, width, height))
+def capture_region(x1giacu, y1giacu, x2giacu, y2giacu):
+    width, height = x2giacu - x1giacu, y2giacu - y1giacu
+    screenshot = pyautogui.screenshot(region=(x1giacu, y1giacu, width, height))
     screenshot = np.array(screenshot)
     screenshot = cv2.cvtColor(screenshot, cv2.COLOR_RGB2GRAY)  # Chuyển sang ảnh xám
     return screenshot
@@ -46,16 +46,17 @@ running_v1 = False  # Biến kiểm soát vòng lặp
 v1_thread = None  # Luồng chạy v1
 def main(stop_event,i=0 ):
     listloc = [(1460, 278),(1456, 339),(1452, 394),(1447, 449),(1461, 514),(1444, 562),(1441, 630),(1438, 678),(1458, 743),(1440, 796),(1443, 860)]
-    x1, y1 = 1361, 412
-    x2, y2 = 1511, 442
-    x3, y3 = 1466, 435  
+    x1giacu, y1giacu = 1361, 412
+    x2giacu, y2giacu = 1511, 442
+    xmaxgia, ymaxgia = 1466, 435  
+    xmingia,ymingia=1473, 443
     if i>= len(listloc):
         bot.send_message(CHAT_ID, "i không hợp lệ!")
         return 
     xRe, yRe = listloc[i]
     
-    xOk, yOk = 1235, 802
-    xCancel, yCancel = 1403, 803
+    xOk, yOk = 1246, 799
+    xCancel, yCancel = 1414, 807
     reference_image = cv2.imread('giacu.png', cv2.IMREAD_GRAYSCALE)
 
     if reference_image is None:
@@ -67,7 +68,7 @@ def main(stop_event,i=0 ):
     while not stop_event.is_set():
     
         
-        captured_image = capture_region(x1, y1, x2, y2)
+        captured_image = capture_region(x1giacu, y1giacu, x2giacu, y2giacu)
 
         if compare_images(captured_image, reference_image):
             pyautogui.click(xCancel, yCancel)
@@ -76,7 +77,7 @@ def main(stop_event,i=0 ):
             pyautogui.click(xRe, yRe)
             checkBox(stop_event,xRe, yRe)
         else:
-            pyautogui.click(x3, y3)
+            pyautogui.click(xmingia, ymingia)
             pyautogui.click(xOk, yOk)
 
             print(datetime.now())
@@ -95,7 +96,7 @@ def main(stop_event,i=0 ):
             # Gửi ảnh qua Telegram
             send_image_telegram(file_name)
 
-            cap(x1, y1, x2, y2, "giacu.png")
+            cap(x1giacu, y1giacu, x2giacu, y2giacu, "giacu.png")
             reference_image = cv2.imread('giacu.png', cv2.IMREAD_GRAYSCALE)
 
             if reference_image is None:

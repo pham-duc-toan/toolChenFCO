@@ -11,7 +11,7 @@ def capture_and_save_screenshot(x1, y1, x2, y2, filename):
     print(f"Ảnh đã được lưu vào {filename}")
 
 if __name__ == "__main__":
-    x1, y1 = 1095, 589 # Điểm bắt đầu capcha
-    x2, y2 = 1208, 634# Điểm kết thúc capcha
-    filename = "onBox.png"
+    x1, y1 = 1165, 787
+    x2, y2 = 1266, 812
+    filename = "checkBox.png"
     capture_and_save_screenshot(x1, y1, x2, y2, filename)

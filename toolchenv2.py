@@ -4,8 +4,8 @@ import numpy as np
 import keyboard
 import time
 from checkBox import main as checkBox
-from chup import capture_and_save_screenshot as cap
-from chup import chupmau
+from chupgiacu import capture_and_save_screenshot as cap
+from chupgiacu import chupmau
 from isOffBox import main as checkOffBox
 from datetime import datetime
 

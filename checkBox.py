@@ -3,9 +3,9 @@ import cv2
 import numpy as np
 import time
 
-def capture_region(x1, y1, x2, y2):
-    width, height = x2 - x1, y2 - y1
-    screenshot = pyautogui.screenshot(region=(x1, y1, width, height))
+def capture_region(x1MuaCauthu, y1MuaCauthu, x2MuaCauthu, y2MuaCauthu):
+    width, height = x2MuaCauthu - x1MuaCauthu, y2MuaCauthu - y1MuaCauthu
+    screenshot = pyautogui.screenshot(region=(x1MuaCauthu, y1MuaCauthu, width, height))
     screenshot = np.array(screenshot)
     screenshot = cv2.cvtColor(screenshot, cv2.COLOR_RGB2GRAY)
     return screenshot
@@ -24,8 +24,8 @@ def main(stop_event,xmua=1266,ymua =  919):
     TOKEN = "7169529565:AAF_VTyhriBeWLvRHd8G5J-fM9pZdCR8PSQ"
     CHAT_ID = "7345469514"
     bot = TeleBot(TOKEN)
-    x1, y1 = 1186, 786
-    x2, y2 = 1230, 816
+    x1MuaCauthu, y1MuaCauthu = 1165, 787
+    x2MuaCauthu, y2MuaCauthu = 1266, 812
      
     reference_image = cv2.imread('checkBox.png', cv2.IMREAD_GRAYSCALE)
     start_time = time.time()
@@ -33,7 +33,7 @@ def main(stop_event,xmua=1266,ymua =  919):
         print("Lỗi: Không thể đọc ảnh checkBox.png. Kiểm tra đường dẫn!")
         return
     while not stop_event.is_set():
-        captured_image = capture_region(x1, y1, x2, y2)
+        captured_image = capture_region(x1MuaCauthu, y1MuaCauthu, x2MuaCauthu, y2MuaCauthu)
         if compare_images(captured_image, reference_image):
             break
         if time.time() - start_time >= 30:
